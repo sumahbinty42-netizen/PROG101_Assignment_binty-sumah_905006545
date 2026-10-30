@@ -1,0 +1,50 @@
+PSEUDOCODE: STUDENT ATTENDANCE MONITORING SYSTEM
+
+BEGIN
+    DISPLAY "Student Attendance Monitoring System"
+
+    REPEAT
+        INPUT numberOfStudents
+        IF numberOfStudents <= 0 THEN
+            DISPLAY "Please enter a valid number greater than zero."
+        ENDIF
+    UNTIL numberOfStudents > 0
+
+    presentCount = 0
+    absentCount = 0
+    studentNumber = 1
+
+    WHILE studentNumber <= numberOfStudents DO
+        DISPLAY "Enter student ID:"
+        INPUT studentID
+
+        DISPLAY "Enter student name:"
+        INPUT studentName
+
+        REPEAT
+            DISPLAY "Enter attendance status (P = Present, A = Absent):"
+            INPUT status
+            status = UPPERCASE(status)
+
+            IF status <> "P" AND status <> "A" THEN
+                DISPLAY "Invalid status. Enter P or A."
+            ENDIF
+        UNTIL status = "P" OR status = "A"
+
+        IF status = "P" THEN
+            presentCount = presentCount + 1
+        ELSE
+            absentCount = absentCount + 1
+        ENDIF
+
+        STORE studentID, studentName, status for the current session
+        studentNumber = studentNumber + 1
+    ENDWHILE
+
+    DISPLAY "DAILY ATTENDANCE SUMMARY"
+    DISPLAY "Total students: ", numberOfStudents
+    DISPLAY "Present: ", presentCount
+    DISPLAY "Absent: ", absentCount
+    DISPLAY all student records for this session
+
+END
